@@ -1,0 +1,16 @@
+    <h1>Home Page</h1>
+    <p>
+		Ruby on Rails : Implementierung eines Telefonbuchs 
+    </p>
+	
+	<% if user_signed_in? %>
+		<span> 
+			<%= current_user.email  %>
+		</span>
+	<% else %>
+		<span> 
+			<%= link_to "Sign up now!", new_user_registration_path, :class => "signup_button round" %>
+		</span>	
+	<% end %>
+	
+	

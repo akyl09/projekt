@@ -1,0 +1,31 @@
+<header>
+	<p>
+		<nav class="round">
+			<ul>
+				<li><%= link_to "Home", root_path  %></li>
+				<li><%= link_to "Help", help_path  %></li>
+				<% if user_signed_in? %>
+				  <li><%= link_to "Users", users_path  %></li>
+				  <li><%= link_to "Profile", current_user  %></li>
+				  <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+				<% else %>
+					<li><%= link_to "Sign in", new_user_session_path %>/<%= link_to "Sign up", new_user_registration_path %></li>
+				<% end %>
+			</ul>
+		</nav>
+		<%= image_tag("logo.png", :alt => "Application exemple", :class => "round") %>
+		<%= form_tag("/search_user", :method => "get") do %>
+		<%= label_tag(:q, "Search for User:") %>
+		<%= text_field_tag(:q) %>
+		<%= submit_tag("Go") %>
+		<% end %>
+	</p>
+	<p>
+		<% if user_signed_in? %>
+			<%= image_tag current_user.avatar.url(:mini) %>
+			<b>Welcome <%= current_user.name%></b>
+		<% end %>
+		
+		
+	</p>
+</header>

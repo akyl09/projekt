@@ -1,0 +1,25 @@
+<table class="profile">
+  <tr>
+    <td class="main">
+		<%= image_tag @user.avatar.url(:small) %><br />
+		
+		<% unless @user.microposts.empty? %>
+        <table class="microposts" summary="Micro-messages de l'utilisateur">
+			<%= render @microposts %>
+        </table>
+        <%= will_paginate @microposts %>
+      <% end %>
+    </td>
+	
+    <td class="sidebar round">
+		<strong>Name: </strong> <%= @user.name %><br />
+		<strong>URL: </strong> <%= link_to user_path(@user), @user %><br />
+		<strong>Messages: </strong> <%= @user.microposts.count %><br /><br />
+		
+		<%= @user.name %>
+			<%= link_to 'New Micropost', new_micropost_path %><br /><br />
+			<%= link_to 'Edit Profile', edit_user_path(@user) %>
+
+    </td>
+  </tr>
+</table>
