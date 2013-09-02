@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar, :role
   has_attached_file :avatar,
 					:styles => {
 					  :mini => "40x40>",
@@ -20,5 +20,9 @@ class User < ActiveRecord::Base
             :order => 'name'
 	end
 	
+	has_one :roles
 	has_many :microposts, :dependent => :destroy
+	
+	has_many :category_bundles
+    has_many :categories, through: :category_bundles
 end

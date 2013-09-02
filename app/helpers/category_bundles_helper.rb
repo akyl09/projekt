@@ -1,0 +1,2 @@
+module CategoryBundlesHelper
+end

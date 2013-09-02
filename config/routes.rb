@@ -1,10 +1,18 @@
 Projekt::Application.routes.draw do
+  resources :category_bundles
+
+
+  resources :categories
+
+
+  resources :roles
+
+
   resources :microposts
 
 
-  resources :users
-  resources :sessions,   :only => [:new, :create, :destroy]
-  resources :microposts, :only => [:create, :destroy]
+  #resources :sessions,   :only => [:new, :create, :destroy]
+  #resources :microposts, :only => [:create, :destroy]
   
   get "microposts/show"
   

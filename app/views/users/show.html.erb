@@ -12,13 +12,15 @@
     </td>
 	
     <td class="sidebar round">
+		<strong>Role: </strong> <%= @user.role %><br />
 		<strong>Name: </strong> <%= @user.name %><br />
 		<strong>URL: </strong> <%= link_to user_path(@user), @user %><br />
 		<strong>Messages: </strong> <%= @user.microposts.count %><br /><br />
 		
-		<%= @user.name %>
+		<% if is_current_user(@user) %>
 			<%= link_to 'New Micropost', new_micropost_path %><br /><br />
 			<%= link_to 'Edit Profile', edit_user_path(@user) %>
+		<% end %>
 
     </td>
   </tr>
